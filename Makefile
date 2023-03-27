@@ -35,7 +35,7 @@ INCLUDE_SOURCES = $(shell find $(INCLUDE_DIR) -name '*.cpp')
 INCLUDE_OBJECTS_TEMP = $(patsubst %.cpp,%.o,$(INCLUDE_SOURCES))
 INCLUDE_OBJECTS = $(patsubst $(INCLUDE_DIR)/%,$(OBJ_DIR)/include/%,$(INCLUDE_OBJECTS_TEMP))
 
-EXECUTABLE = $(RUN_DIR)/main
+EXECUTABLE = $(RUN_DIR)/stopper
 
 REMOTE_OBJECTS = $(shell find $(OBJ_DIR) -name '*.o')
 
@@ -69,7 +69,7 @@ local_compile: $(SRC_OBJECTS) $(INCLUDE_OBJECTS)
 
 # run main binary remote target
 remote_start: 
-	ssh -t $(USER)@$(HOST) "cd projects/$(WORKSPACE_NAME); $(RUN_DIR)/main"
+	ssh -t $(USER)@$(HOST) "cd projects/$(WORKSPACE_NAME); $(RUN_DIR)/stopper"
 
 # envoke build on remote target
 remote_build:
